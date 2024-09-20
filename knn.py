@@ -1,79 +1,106 @@
-"knn classfier to detect empty parking spots"
-    # Importing the libraries
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import classification_report,f1_score,confusion_matrix, accuracy_score, recall_score
     
 # Importing the dataset
 dataset = pd.read_csv('P1.csv')
-print(dataset)
 X = dataset.iloc[:, [0, 1]].values
 y = dataset.iloc[:, 2].values
     
 # Splitting the dataset into the Training set and Test set
-from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.20, random_state = 0)
 
-# Feature Scaling
-from sklearn.preprocessing import StandardScaler
-sc = StandardScaler()
-X_train = sc.fit_transform(X_train)
-X_test = sc.transform(X_test)
-
-# Fitting K-NN to the Training set
-from sklearn.neighbors import KNeighborsClassifier
-classifier = KNeighborsClassifier(n_neighbors = 5, metric = 'minkowski', p = 2)
-classifier.fit(X_train, y_train)
+# Fitting K-NN to the Training set where K=3
+classifier_3 = KNeighborsClassifier(n_neighbors = 3, metric = 'euclidean', p = 2)
+classifier_3.fit(X_train, y_train)
 
 # Predicting the Test set results
-y_pred = classifier.predict(X_test)
+y_pred_3 = classifier_3.predict(X_test)
 
 # Making the Confusion Matrix
-from sklearn.metrics import confusion_matrix
-cm = confusion_matrix(y_test, y_pred)
+cm = confusion_matrix(y_test, y_pred_3)
 
-# Visualising the Training set results
-from matplotlib.colors import ListedColormap
+accuracy = accuracy_score(y_test, y_pred_3)
 
-X_set, y_set = X_train, y_train
-X1, X2 = np.meshgrid(np.arange(start = X_set[:, 0].min() - 1, stop = X_set[:, 0].max() + 1, step = 0.01),
-                     np.arange(start = X_set[:, 1].min() - 1, stop = X_set[:, 1].max() + 1, step = 0.01))
-plt.contourf(X1, X2, classifier.predict(np.array([X1.ravel(), X2.ravel()]).T).reshape(X1.shape),
-                alpha = 0.75, cmap = ListedColormap(('red', 'green')))
-plt.xlim(X1.min(), X1.max())
-plt.ylim(X2.min(), X2.max())
-for i, j in enumerate(np.unique(y_set)):
-    plt.scatter(X_set[y_set == j, 0], X_set[y_set == j, 1],
-                c = ListedColormap(('red', 'green'))(i), label = j)
-plt.title('K-NN (Training set)')
-plt.xlabel('Age')
-plt.ylabel('Estimated Salary')
-plt.legend()
-plt.show()
+recall = recall_score(y_test, y_pred_3)
 
-# Visualising the Test set results
-from matplotlib.colors import ListedColormap
-X_set, y_set = X_test, y_test
-X1, X2 = np.meshgrid(np.arange(start = X_set[:, 0].min() - 1, stop = X_set[:, 0].max() + 1, step = 0.01),
-                     np.arange(start = X_set[:, 1].min() - 1, stop = X_set[:, 1].max() + 1, step = 0.01))
-plt.contourf(X1, X2, classifier.predict(np.array([X1.ravel(), X2.ravel()]).T).reshape(X1.shape),
-                alpha = 0.75, cmap = ListedColormap(('red', 'green')))
-plt.xlim(X1.min(), X1.max())
-plt.ylim(X2.min(), X2.max())
-for i, j in enumerate(np.unique(y_set)):
-    plt.scatter(X_set[y_set == j, 0], X_set[y_set == j, 1],
-                c = ListedColormap(('red', 'green'))(i), label = j)
-plt.title('K-NN (Test set)')
-plt.xlabel('Age')
-plt.ylabel('Estimated Salary')
-plt.legend()
-plt.show()
+report = classification_report(y_test, y_pred_3)
 
-# Predicting a new result
-#print(classifier.predict(sc.transform([[30,87000]])))
-#print(classifier.predict(sc.transform([[40,87000]])))
-#print(classifier.predict(sc.transform([[30,17000]])))
-#print(classifier.predict(sc.transform([[40,17000]])))
-#print(classifier.predict(sc.transform([[20,17000]])))
-#print(classifier.predict(sc.transform([[20,87000]])))
-    
+f1 = f1_score(y_test, y_pred_3)
+
+#Report for 3 neigbours 7368421052631579
+print("#---Classification Report for 3 neighbours---#")
+print("---Confusion Matrix---")
+print(cm)
+print("---Accuracy---")
+print(accuracy)
+print("---Recall---")
+print(recall)
+print("---Predicted Values---")
+print(y_pred_3)
+print("---f1 Score---")
+print(f1)
+
+# Fitting K-NN to the Training set where K=5
+classifier_5 = KNeighborsClassifier(n_neighbors = 5, metric = 'euclidean', p = 2)
+classifier_5.fit(X_train, y_train)
+
+# Predicting the Test set results
+y_pred_5 = classifier_5.predict(X_test)
+
+# Making the Confusion Matrix
+cm = confusion_matrix(y_test, y_pred_5)
+
+accuracy = accuracy_score(y_test, y_pred_5)
+
+recall = recall_score(y_test, y_pred_5)
+
+report = classification_report(y_test, y_pred_5)
+
+f1 = f1_score(y_test, y_pred_5)
+
+#Report for 3 neigbours
+print("#---Classification Report for 5 neighbours---#")
+print("---Confusion Matrix---")
+print(cm)
+print("---Accuracy---")
+print(accuracy)
+print("---Recall---")
+print(recall)
+print("---Predicted Values---")
+print(y_pred_5)
+print("---f1 Score---")
+print(f1)
+
+# Fitting K-NN to the Training set where K=7
+classifier_7 = KNeighborsClassifier(n_neighbors = 7, metric = 'euclidean')
+classifier_7.fit(X_train, y_train)
+
+# Predicting the Test set results
+y_pred_7 = classifier_7.predict(X_test)
+
+# Making the Confusion Matrix
+cm = confusion_matrix(y_test, y_pred_7)
+
+accuracy = accuracy_score(y_test, y_pred_7)
+
+recall = recall_score(y_test, y_pred_7)
+
+
+f17 = f1_score(y_test, y_pred_7)
+
+#Report for 7 neigbours
+print("#---Classification Report for 7 neighbours---#")
+print("---Confusion Matrix---")
+print(cm)
+print("---Accuracy---")
+print(accuracy)
+print("---Recall---")
+print(recall)
+print("---Predicted Values---")
+print(y_pred_7)
+print("---f1 Score---")
+print(f17)
