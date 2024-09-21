@@ -1,5 +1,9 @@
 # CSE6363_Fall24_P1
 
+# Disclaimer
+* Output file is pre-generated.
+* If a new run needs to be done please empty out the output file and save it first
+
 ## Install the following dependencies
 
 * Linux is recommended
