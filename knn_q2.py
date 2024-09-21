@@ -1,3 +1,4 @@
+#Description: This file contains the code for question 2 of the assignment.
 import numpy as np
 import math
 
@@ -48,6 +49,7 @@ def write_data(file_name, data):
             tree_data = find_min_distance_tree(data[i])
             f.write(str(data[i][0]) + ' ' + str(data[i][1]) + ' ' 
                     + str(data[i][2]) + ' ' + str(tree_data[0]) + ' ' + str(tree_data[1]) + '\n')
+            
 #append data to file
 def append_data(file_name, data):
     with open(file_name, 'a') as f:
@@ -61,6 +63,7 @@ def split_data(data):
     test_data = shuffled_data[int(0.8 * len(shuffled_data)):]
     return train_data, test_data
 
+#find k nearest neighbours
 def findNeigbours(train_data, test_data, k, input_vector = 2):
     distance = []
     for train_ins in train_data:
@@ -71,14 +74,12 @@ def findNeigbours(train_data, test_data, k, input_vector = 2):
         elif input_vector == 4:
             dist = euclidean_distance_4(test_data, train_ins)
         distance.append((train_ins, dist))
-    #sort the distance array based on second element
+
     distance.sort(key = lambda x: x[1])
     neighbours = []
     for i in range(k):
         neighbours.append(distance[i][0])
-        #print(distance[i][1])
-            
-    #print(neighbours)
+        
     return neighbours
 
 #predict class based on neighbours
@@ -101,7 +102,6 @@ def knnClassifier(train_data, test_data, k, input_vector = 2):
         neighbours = findNeigbours(train_data, test_ins, k, input_vector)
         pre = predict(neighbours)
         predictData.append(pre)
-    #print(predictData)
     return predictData
             
 #calculate accuracy
@@ -187,6 +187,7 @@ def calculate_metrics(test_data, train_set, test_set, k, input_encoding):
 
 
 def main():
+    append_data('P1Output2024.txt', 'Results of Question 2')
     data = read_data('P1input2024.txt')
     data = data.astype(np.int32)
     write_data('P1input2024LongRecords.txt', data)

@@ -1,72 +1,115 @@
+Results of Question 1
+#---Classification Report for 3 neighbours---#
+---Confusion Matrix---
+[[7 2]
+ [2 8]]
+---Accuracy---
+0.7894736842105263
+---Recall---
+0.8
+---Predicted Values---
+[0 0 1 0 0 1 1 1 0 0 0 1 1 0 0 1 1 1 1]
+---f1 Score---
+0.8
+---Precision---
+0.8
+
+#---Classification Report for 5 neighbours---#
+---Confusion Matrix---
+[[7 2]
+ [4 6]]
+---Accuracy---
+0.6842105263157895
+---Recall---
+0.6
+---f1 Score---
+0.6666666666666666
+---Precision---
+0.75
+
+#---Classification Report for 7 neighbours---#
+---Confusion Matrix---
+[[7 2]
+ [2 8]]
+---Accuracy---
+0.7894736842105263
+---Recall---
+0.8
+---f1 Score---
+0.8
+---Precision---
+0.8
+
+Results of Question 2
 Question 2 K = 3 input vector set 2
-Confusion Matrix: [[10, 3], [1, 6]]
-Accuracy: 80.0
-Precision: 66.66666666666666
-Recall: 85.71428571428571
-F1 Score: 75.0
+Confusion Matrix: [[8, 2], [1, 9]]
+Accuracy: 85.0
+Precision: 81.81818181818183
+Recall: 90.0
+F1 Score: 85.71428571428574
 
 
 Question 2 K = 5 input vector set 2
-Confusion Matrix: [[10, 3], [0, 7]]
-Accuracy: 85.0
-Precision: 70.0
-Recall: 100.0
-F1 Score: 82.3529411764706
+Confusion Matrix: [[10, 0], [1, 9]]
+Accuracy: 95.0
+Precision: 100.0
+Recall: 90.0
+F1 Score: 94.73684210526316
 
 
 Question 2 K = 7 input vector set 2
-Confusion Matrix: [[10, 3], [0, 7]]
-Accuracy: 85.0
-Precision: 70.0
-Recall: 100.0
-F1 Score: 82.3529411764706
+Confusion Matrix: [[9, 1], [1, 9]]
+Accuracy: 90.0
+Precision: 90.0
+Recall: 90.0
+F1 Score: 90.0
 
 
 Question 2 K = 3 input vector set 3
-Confusion Matrix: [[12, 1], [0, 7]]
-Accuracy: 95.0
-Precision: 87.5
-Recall: 100.0
-F1 Score: 93.33333333333333
+Confusion Matrix: [[9, 1], [1, 9]]
+Accuracy: 90.0
+Precision: 90.0
+Recall: 90.0
+F1 Score: 90.0
 
 
 Question 2 K = 5 input vector set 3
-Confusion Matrix: [[12, 1], [0, 7]]
+Confusion Matrix: [[10, 0], [1, 9]]
 Accuracy: 95.0
-Precision: 87.5
-Recall: 100.0
-F1 Score: 93.33333333333333
+Precision: 100.0
+Recall: 90.0
+F1 Score: 94.73684210526316
 
 
 Question 2 K = 7 input vector set 3
-Confusion Matrix: [[12, 1], [0, 7]]
-Accuracy: 95.0
-Precision: 87.5
-Recall: 100.0
-F1 Score: 93.33333333333333
+Confusion Matrix: [[9, 1], [1, 9]]
+Accuracy: 90.0
+Precision: 90.0
+Recall: 90.0
+F1 Score: 90.0
 
 
 Question 2 K = 3 input vector set 4
-Confusion Matrix: [[11, 2], [1, 6]]
+Confusion Matrix: [[8, 2], [1, 9]]
 Accuracy: 85.0
-Precision: 75.0
-Recall: 85.71428571428571
-F1 Score: 80.0
+Precision: 81.81818181818183
+Recall: 90.0
+F1 Score: 85.71428571428574
 
 
 Question 2 K = 5 input vector set 4
-Confusion Matrix: [[12, 1], [0, 7]]
-Accuracy: 95.0
-Precision: 87.5
-Recall: 100.0
-F1 Score: 93.33333333333333
+Confusion Matrix: [[9, 1], [1, 9]]
+Accuracy: 90.0
+Precision: 90.0
+Recall: 90.0
+F1 Score: 90.0
 
 
 Question 2 K = 7 input vector set 4
-Confusion Matrix: [[12, 1], [0, 7]]
-Accuracy: 95.0
-Precision: 87.5
-Recall: 100.0
-F1 Score: 93.33333333333333
+Confusion Matrix: [[9, 1], [1, 9]]
+Accuracy: 90.0
+Precision: 90.0
+Recall: 90.0
+F1 Score: 90.0
 
 
